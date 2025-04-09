@@ -1,11 +1,96 @@
-import './App.css'
+import { useState, useEffect } from 'react'
 
 function App() {
 
+  const [mainFeed, setMainFeed] = useState([])
+  const [text, setText] = useState('')
+  const [image, setImage] = useState('')
+
+  const updateMainFeed = function() {
+    let timestamp = Date.now()
+    let content = text
+    let picture = image
+    let newPost = {time: timestamp, content: content, image: picture}
+    let newMainFeed = [newPost, ...mainFeed]
+    newMainFeed.sort((a, b) => b.time - a.time)
+    setMainFeed(newMainFeed)
+
+    setText('')
+    localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
+  }
+
+  const handleText = function(event) {
+    setText(event.target.value)
+  }
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0]
+    const reader = new FileReader()
+
+    const maxSize = 250000;
+
+    if (file.size > maxSize) {
+      console.log("File size must be less than 250KB");
+      return;
+    }
+
+    if(file){
+      reader.readAsDataURL(file)
+    }
+
+    reader.onloadend = () => {
+      console.log('Image uploaded:', reader.result)
+      setImage(reader.result)
+    }
+  }
+
+  useEffect(() => {
+    const storedFeed = localStorage.getItem('mainfeed')
+    if (storedFeed) {
+      setMainFeed(JSON.parse(storedFeed))
+    }
+  }, []) 
+
+  const mainFeedJSX = mainFeed.map((entry, index) => {
+    const date = new Date(entry.time)
+    const dateString = date.toDateString()
+    const timeString = date.toLocaleTimeString()
+
+    return(
+      <div key={index} className="m-2 p-2 w-100">
+        <div className="text-md text-gray-500">{dateString}: {timeString}</div>
+        <div className="text-lg">{entry.content}</div>
+        <img src={entry.image} className='w-32 h-32'/>
+      </div>
+    )
+  })
+
   return (
     <>
-      <div className="container">
-        <p>Hello, World!</p>
+      <div className="p-2 flex flex-col items-center">
+
+        <h1>Posts</h1>
+
+        <textarea 
+          className='m-2 p-2 w-100 border rounded' 
+          value={text} 
+          onChange={ (event) => handleText(event) }
+        />
+
+        <h2>Upload image:</h2>
+        <input 
+          type="file" 
+          className="m-2 p-2 w-50 bg-slate-200 border rounded"
+          onChange={handleImageUpload} 
+        />
+
+        <button className="m-2 p-2 w-50 bg-green-500 text-white rounded"
+          onClick={ () => updateMainFeed() }>
+          Create Post
+        </button>
+
+        {mainFeedJSX}
+
       </div>
     </>
   )
