@@ -16,7 +16,7 @@ function App() {
     setMainFeed(newMainFeed)
 
     setText('')
-    setImage(null)
+    setImage('')
     localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
   }
 
