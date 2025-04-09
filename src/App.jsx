@@ -56,14 +56,28 @@ function App() {
     const date = new Date(entry.time)
     const dateString = date.toDateString()
     const timeString = date.toLocaleTimeString()
+    const imageString = entry.image
 
-    return(
-      <div key={index} className="m-2 p-2 w-100">
-        <div className="text-md text-gray-500">{dateString}: {timeString}</div>
-        <div className="text-lg">{entry.content}</div>
-        <img src={entry.image} className='w-32 h-32'/>
-      </div>
-    )
+    if(imageString != ''){
+
+      return(
+        <div key={index} className="m-2 p-2 w-100">
+          <div className="text-md text-gray-500">{dateString}: {timeString}</div>
+          <div className="text-lg">{entry.content}</div>
+          <img src={entry.image} className='w-32 h-32'/>
+        </div>
+      )
+
+    }else{
+
+      return(
+        <div key={index} className="m-2 p-2 w-100">
+          <div className="text-md text-gray-500">{dateString}: {timeString}</div>
+          <div className="text-lg">{entry.content}</div>
+        </div>
+      )
+
+    }
   })
 
   return (
