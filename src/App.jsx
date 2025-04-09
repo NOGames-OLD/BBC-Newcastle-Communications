@@ -4,7 +4,7 @@ function App() {
 
   const [mainFeed, setMainFeed] = useState([])
   const [text, setText] = useState('')
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState(null)
 
   const updateMainFeed = function() {
     let timestamp = Date.now()
@@ -16,7 +16,7 @@ function App() {
     setMainFeed(newMainFeed)
 
     setText('')
-    setImage('')
+    setImage(null)
     localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
   }
 
@@ -58,7 +58,7 @@ function App() {
     const timeString = date.toLocaleTimeString()
     const imageString = entry.image
 
-    if(imageString != ''){
+    if(imageString != null){
 
       return(
         <div key={index} className="m-2 p-2 w-100">
