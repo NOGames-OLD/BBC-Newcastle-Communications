@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bbcapp-dev-5be17-authRole",
+      "UnauthRoleArn": "arn:aws:iam::585768157327:role/amplify-bbcapp-dev-5be17-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::585768157327:role/amplify-bbcapp-dev-5be17-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bbcapp-dev-5be17-deployment",
+      "UnauthRoleName": "amplify-bbcapp-dev-5be17-unauthRole",
+      "StackName": "amplify-bbcapp-dev-5be17",
+      "StackId": "arn:aws:cloudformation:us-east-1:585768157327:stack/amplify-bbcapp-dev-5be17/ce600fd0-25ac-11f0-a773-0e2a5d7821b3",
+      "AmplifyAppId": "d30dz6tyh2xegb"
+    },
+    "categories": {
+      "auth": {
+        "bbcappb0813efd": {}
+      }
+    }
+  }
+}

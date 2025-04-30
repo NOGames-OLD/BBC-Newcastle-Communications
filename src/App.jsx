@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react'
+import React from 'react';
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 function App() {
 
@@ -84,6 +89,8 @@ function App() {
     <>
       <div className="p-2 flex flex-col items-center">
 
+        <button onClick={signOut}>Sign out</button>
+
         <h1>Posts</h1>
 
         <textarea 
@@ -111,4 +118,4 @@ function App() {
   )
 }
 
-export default App
+export default withAuthenticator(App);
