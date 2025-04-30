@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
-import awsconfig from './aws-exports';
+import awsconfig from './src/aws-exports';
 Amplify.configure(awsconfig);
 
 function App() {
