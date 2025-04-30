@@ -5,7 +5,7 @@ import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
-function App() {
+function App({ signOut }) {
 
   const [mainFeed, setMainFeed] = useState([])
   const [text, setText] = useState('')
