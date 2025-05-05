@@ -40,7 +40,9 @@ function App({ signOut }) {
     setText('')
     setImage(null)
     localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
-    setFileData(mainFeed)
+    const blob = new Blob([JSON.stringify(newMainFeed)], {type: 'application/json'});
+    const file = new File([blob], 'MainFeed.json', {type: 'application/json'});
+    setFileData(file)
     console.log(fileData.name)
     console.log(fileData.type)
     console.log(fileData)
