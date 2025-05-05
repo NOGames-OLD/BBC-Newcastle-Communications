@@ -1,20 +1,23 @@
 import { useState, useEffect } from 'react'
 import React from 'react';
-import { Amplify } from 'aws-amplify';
+import { Amplify, Storage } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
-import { defineStorage } from '@aws-amplify/backend'
 Amplify.configure(awsconfig);
-
-export const storage = defineStorage({
-  name: 'amplifyTeamDrive'
-})
 
 function App({ signOut }) {
 
+  const [fileData, setFileData] = useState([])
   const [mainFeed, setMainFeed] = useState([])
   const [text, setText] = useState('')
   const [image, setImage] = useState(null)
+
+  const uploadFile = async () => {
+    const result = await Storage.put(fileData.name, fileData, {
+      contentType: fileData.type,
+    });
+    console.log(21, result)
+  };
 
   const updateMainFeed = function() {
     let timestamp = Date.now()
@@ -27,7 +30,9 @@ function App({ signOut }) {
 
     setText('')
     setImage(null)
-    localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
+    //localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
+    setFileData(JSON.stringify(newMainFeed))
+    uploadFile()
   }
 
   const handleText = function(event) {

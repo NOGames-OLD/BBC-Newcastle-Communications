@@ -17,5 +17,26 @@
         "bbcapp1517f47f": {}
       }
     }
+  },
+  "test": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bbcapp-test-0fb77-authRole",
+      "UnauthRoleArn": "arn:aws:iam::585768157327:role/amplify-bbcapp-test-0fb77-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::585768157327:role/amplify-bbcapp-test-0fb77-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-bbcapp-test-0fb77-deployment",
+      "UnauthRoleName": "amplify-bbcapp-test-0fb77-unauthRole",
+      "StackName": "amplify-bbcapp-test-0fb77",
+      "StackId": "arn:aws:cloudformation:eu-west-1:585768157327:stack/amplify-bbcapp-test-0fb77/9896c2b0-298d-11f0-a8cb-066e073760a5",
+      "AmplifyAppId": "dvbdqfctbhmwr"
+    },
+    "categories": {
+      "auth": {
+        "bbcapp1517f47f": {}
+      },
+      "storage": {
+        "PostFeedStorage": {}
+      }
+    }
   }
 }
