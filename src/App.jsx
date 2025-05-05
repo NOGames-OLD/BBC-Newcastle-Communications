@@ -40,7 +40,7 @@ function App({ signOut }) {
     setText('')
     setImage(null)
     //localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
-    setFileData(JSON.stringify(newMainFeed))
+    setFileData(newMainFeed)
     uploadFile(fileData)
   }
 
