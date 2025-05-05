@@ -5,6 +5,7 @@ import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
 //import amplifyconfig from './amplifyconfiguration.json';
 import { uploadData } from 'aws-amplify/storage';
+import { downloadData } from 'aws-amplify/storage';
 //Amplify.configure(amplifyconfig);
 Amplify.configure(awsconfig);
 
@@ -16,11 +17,26 @@ function App({ signOut }) {
   const [image, setImage] = useState(null)
 
   const uploadFile = async (file) => {
-    uploadData({
-      path: file.name,
-      data: file
-    });
+    try{
+      uploadData({
+        path: file.name,
+        data: file
+      });
+      console.log("Success", file.name)
+    } catch (error){
+      console.log("Error: ", error)
+    }
   };
+
+  const { body, eTag } = await downloadData({
+    path: 'public/album/2024/1.jpg',
+    // Alternatively, path: ({identityId}) => `protected/${identityId}/album/2024/1.jpg`
+    options: {
+      onProgress: (event) => {
+        console.log(event.transferredBytes);
+      } // optional progress callback
+    }
+  }).result;
 
   const updateMainFeed = function() {
     let timestamp = Date.now()
