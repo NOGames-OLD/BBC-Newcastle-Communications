@@ -3,11 +3,9 @@ import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
-import { defineStorage } from '@aws-amplify/backend';
+import amplifyconfig from './amplifyconfiguration.json';
+Amplify.configure(amplifyconfig);
 Amplify.configure(awsconfig);
-export const storage = defineStorage({
-  name: 'PostFeedStorage'
-});
 
 function App({ signOut }) {
 
