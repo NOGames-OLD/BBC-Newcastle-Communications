@@ -3,7 +3,9 @@ import React from 'react';
 import { Amplify, Storage } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
+import awsExports from './aws-exports';
 Amplify.configure(awsconfig);
+Amplify.configure(awsExports);
 
 function App({ signOut }) {
 
