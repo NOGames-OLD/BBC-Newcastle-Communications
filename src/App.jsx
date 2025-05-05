@@ -89,7 +89,7 @@ function App({ signOut }) {
     <>
       <div className="p-2 flex flex-col items-center">
 
-        <img src="public/BBCLogo.png" alt="Something is going wrong"></img>
+        <img src="public/BBCLogo.png" alt="Something is going wrong"/>
 
         <button onClick={signOut}>Sign out</button>
 
