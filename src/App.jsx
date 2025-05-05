@@ -3,7 +3,12 @@ import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
+import { defineStorage } from '@aws-amplify/backend'
 Amplify.configure(awsconfig);
+
+export const storage = defineStorage({
+  name: 'amplifyTeamDrive'
+})
 
 function App({ signOut }) {
 
