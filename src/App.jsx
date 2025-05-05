@@ -43,9 +43,9 @@ function App({ signOut }) {
     const blob = new Blob([JSON.stringify(newMainFeed)], {type: 'application/json'});
     const file = new File([blob], 'MainFeed.json', {type: 'application/json'});
     setFileData(file)
-    console.log(fileData.name)
-    console.log(fileData.type)
-    console.log(fileData)
+    console.log(file.name)
+    console.log(file.type)
+    console.log(file)
     uploadFile(fileData)
   }
 
