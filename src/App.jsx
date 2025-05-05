@@ -40,8 +40,7 @@ function App({ signOut }) {
     setText('')
     setImage(null)
     localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
-    file = new File([mainFeed], "Feed.txt", { type: 'text/plain' });
-    setFileData(file)
+    setFileData(mainFeed)
     console.log(fileData.name)
     console.log(fileData.type)
     console.log(fileData)
