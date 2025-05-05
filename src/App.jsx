@@ -3,8 +3,9 @@ import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
-import amplifyconfig from './amplifyconfiguration.json';
-Amplify.configure(amplifyconfig);
+//import amplifyconfig from './amplifyconfiguration.json';
+import { uploadData } from 'aws-amplify/storage';
+//Amplify.configure(amplifyconfig);
 Amplify.configure(awsconfig);
 
 function App({ signOut }) {
@@ -14,11 +15,11 @@ function App({ signOut }) {
   const [text, setText] = useState('')
   const [image, setImage] = useState(null)
 
-  const uploadFile = async () => {
-    const result = await Storage.put(fileData.name, fileData, {
-      contentType: fileData.type,
+  const uploadFile = async (file) => {
+    uploadData({
+      path: file.name,
+      data: file
     });
-    console.log(21, result)
   };
 
   const updateMainFeed = function() {
@@ -34,7 +35,7 @@ function App({ signOut }) {
     setImage(null)
     //localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
     setFileData(JSON.stringify(newMainFeed))
-    uploadFile()
+    uploadFile(fileData)
   }
 
   const handleText = function(event) {
