@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Blob } from 'buffer';
 import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
