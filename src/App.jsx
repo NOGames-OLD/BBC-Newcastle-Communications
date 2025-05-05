@@ -40,7 +40,7 @@ function App({ signOut }) {
     setText('')
     setImage(null)
     localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
-    setFileData(localStorage.getItem('mainfeed'))
+    setFileData(new Blob(newMainFeed, {type: "text/plain;charset=utf-8"}))
     console.log(fileData.name)
     console.log(fileData.type)
     console.log(fileData)
