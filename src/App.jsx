@@ -42,11 +42,10 @@ function App({ signOut }) {
     localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
     const blob = new Blob([JSON.stringify(newMainFeed)], {type: 'application/json'});
     const file = new File([blob], 'MainFeed.json', {type: 'application/json'});
-    setFileData(file)
     console.log(file.name)
     console.log(file.type)
     console.log(file)
-    uploadFile(fileData)
+    uploadFile(file)
   }
 
   const handleText = function(event) {
