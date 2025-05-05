@@ -39,8 +39,8 @@ function App({ signOut }) {
 
     setText('')
     setImage(null)
-    //localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
-    setFileData(JSON.stringify(newMainFeed))
+    localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
+    setFileData(localStorage.getItem('mainfeed'))
     console.log(fileData.name)
     console.log(fileData.type)
     console.log(fileData)
