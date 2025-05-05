@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import React from 'react';
-import { Amplify, Storage } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import awsconfig from './aws-exports';
-import awsExports from './aws-exports';
+import { defineStorage } from '@aws-amplify/backend';
 Amplify.configure(awsconfig);
-Amplify.configure(awsExports);
+export const storage = defineStorage({
+  name: 'PostFeedStorage'
+});
 
 function App({ signOut }) {
 
