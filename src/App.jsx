@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Blob } from 'buffer';
 import React from 'react';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
@@ -41,8 +40,8 @@ function App({ signOut }) {
     setText('')
     setImage(null)
     localStorage.setItem('mainfeed', JSON.stringify(newMainFeed))
-    blob = new Blob([mainFeed], { type: 'text/plain' });
-    setFileData(blob)
+    file = new File([mainFeed], "Feed.txt", { type: 'text/plain' });
+    setFileData(file)
     console.log(fileData.name)
     console.log(fileData.type)
     console.log(fileData)
