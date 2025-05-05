@@ -28,16 +28,6 @@ function App({ signOut }) {
     }
   };
 
-  const { body, eTag } = await downloadData({
-    path: 'public/album/2024/1.jpg',
-    // Alternatively, path: ({identityId}) => `protected/${identityId}/album/2024/1.jpg`
-    options: {
-      onProgress: (event) => {
-        console.log(event.transferredBytes);
-      } // optional progress callback
-    }
-  }).result;
-
   const updateMainFeed = function() {
     let timestamp = Date.now()
     let content = text
